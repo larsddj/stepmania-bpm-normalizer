@@ -1,4 +1,5 @@
 A way to automize normalizing of bpm's for stepmania charts
+
 This project was made to have a quick and easy way of normalizing charts that go all over the place with bpm's
 
 
