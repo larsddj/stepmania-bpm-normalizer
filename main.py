@@ -28,6 +28,15 @@ def getBpmChanges():
     bpmChanges = BPMSTRING.split(",")
     return bpmChanges
 
+class bpmChange():
+    beat = -1
+    bpm = -1
+    ms = -1
+
+    def __init__(self, beat, bpm):
+        self.beat = beat
+        self.bpm = bpm
+
 # convert our BPM changes located by beats to BPM changes located by ms for use with pydub
 #def convertBpmBeatsToMs():
  #   return bpmChangesMs[]
