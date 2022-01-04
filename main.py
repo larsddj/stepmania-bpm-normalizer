@@ -25,7 +25,7 @@ def getStartingBpm(bpmString):
 
 # grab all the beats where BPM changes occur
 def getBpmChanges():
-    bpmChanges = BPMSTRING.split(",")
+    bpmChanges = BPM_STRING.split(",")
     return bpmChanges
 
 def getBpmChangeListObj(bpmChangesString):
@@ -49,8 +49,19 @@ class bpmChange():
         self.bpm = bpm
 
 # convert our BPM changes located by beats to BPM changes located by ms for use with pydub
-#def convertBpmBeatsToMs():
- #   return bpmChangesMs[]
+# you use a calc of 60,000 / BPM to get the amount of ms per beat
+# if you have the ms per beat you can see at what ms bpmchanges occur
+# ! BE CAREFUL, YOU NEED TO TRACK CUMULATIVE BECAUSE OF CHANGES !
+
+def convertBpmBeatsToMs(bpmChangesObj):
+    curMs = 0
+    cumMs = 0
+    curMsPerBeat = 0
+
+    for bpmChange in bpmChangesObj:
+        curMsPerBeat = 60000 / bpmChange.bpm
+        cumMs = curMs + cumMs
+        curMs =  bpmChange.beat * curMsPerBeat
 
 # runtime
 # constants:
