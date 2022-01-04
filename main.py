@@ -28,6 +28,17 @@ def getBpmChanges():
     bpmChanges = BPMSTRING.split(",")
     return bpmChanges
 
+def getBpmChangeListObj(bpmChangesString):
+    bpmObj = []
+    for bpm in bpmChangesString:
+        splitStr = bpm.split('=')
+        curBeat = splitStr[0]
+        curBpm = splitStr[1]
+
+        bpmObj.append(bpmChange(curBeat, curBpm))
+    
+    return bpmObj
+
 class bpmChange():
     beat = -1
     bpm = -1
