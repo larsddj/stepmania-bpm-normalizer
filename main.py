@@ -34,8 +34,8 @@ def getBpmChanges():
 
 # runtime
 # constants:
-BPMSTRING = grabBpmChanges()
-STARTINGBPM = getStartingBpm(BPMSTRING)
-BPMCHANGES = getBpmChanges()
+BPM_STRING = grabBpmChanges()
+STARTING_BPM = getStartingBpm(BPM_STRING)
+BPM_CHANGES_STRING = getBpmChanges()
 
-print("This file starts at "+STARTINGBPM+" BPM and has "+str(len(BPMCHANGES))+" changes in BPM")
+print("This file starts at "+STARTING_BPM+" BPM and has "+str(len(BPM_CHANGES_STRING))+" changes in BPM")
