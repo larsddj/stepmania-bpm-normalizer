@@ -69,31 +69,31 @@ def convertBpmBeatsToMs(bpmChangesObj):
     msDifference = 0
     cumulativeMs = 0
 
-
     for bpmChange in bpmChangesObj:
-        print("Previous Beat: "+str(previousBeat))
         # at first we calculate a ms per beat at the current bpm 
         currentMsPerBeat = 60000 / float(bpmChange.getBpm())
-        print("Current MS for a Beat: "+str(currentMsPerBeat))
-        print("Current BPM: "+ bpmChange.getBpm())
         # then we calculate the amount of beats passed since the previous bpm change
         beatDifference = float(bpmChange.beat) - previousBeat
-        print("Current Beat: "+str(bpmChange.beat))
-        print("Beats passed since previous change: "+str(beatDifference))
         # from that we can calculate the time in ms that has passed
         msDifference = beatDifference*previousMsPerBeat
-        print("MS passed since previous change: "+str(msDifference))
         # finally we have a cumulative ms that ends up being the timestamp of the bpm change
         cumulativeMs+= msDifference
-        print("Cumulative MS passed: "+str(cumulativeMs))
-        print("------------------------------------------------------------")
-
         # at last we set the timestamp to the bpm change object
         bpmChange.setMs(cumulativeMs) 
         previousBeat = float(bpmChange.beat)
         previousMsPerBeat = currentMsPerBeat
     
     return bpmChange
+
+def printBpmDebug(bpmChange):
+    print("Previous Beat: "+str(previousBeat))
+    print("Current MS for a Beat: "+str(currentMsPerBeat))
+    print("Current BPM: "+ bpmChange.getBpm())
+    print("Current Beat: "+str(bpmChange.beat))
+    print("Beats passed since previous change: "+str(beatDifference))
+    print("MS passed since previous change: "+str(msDifference))
+    print("Cumulative MS passed: "+str(cumulativeMs))
+    print("------------------------------------------------------------")
 
 # def makeNormalizedSmFile():
 #     # copy over the file (probably breaks on other operating systems oops)
